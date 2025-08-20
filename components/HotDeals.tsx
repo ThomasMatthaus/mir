@@ -52,40 +52,42 @@ export default function HotDeals() {
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {hotProperties.map((property) => (
         <Card key={property.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-          <div className="relative h-48">
+          <div className="relative h-48 md:h-56">
             <img
               src={property.image}
               alt={property.title}
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 left-4">
-              <Badge variant={getStatusVariant(property.status) as any} className="text-sm font-medium">
-                <Flame className="w-3 h-3 mr-1" />
+              <Badge variant={getStatusVariant(property.status) as any} className="text-xs md:text-sm font-medium">
+                <Flame className="w-3 h-3 mr-1 flex-shrink-0" />
                 {getStatusLabel(property.status)}
               </Badge>
             </div>
           </div>
           
-          <CardContent className="p-6">
-            <h3 className="text-xl font-semibold mb-3 line-clamp-2">{property.title}</h3>
+          <CardContent className="p-4 md:p-6">
+            <h3 className="text-lg md:text-xl font-semibold mb-3 line-clamp-2 leading-tight">
+              {property.title}
+            </h3>
             
             <div className="flex items-center text-muted-foreground mb-3">
-              <MapPin className="w-4 h-4 mr-2" />
+              <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
               <span className="text-base">{property.district}</span>
             </div>
             
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center text-primary">
-                <Ruble className="w-5 h-5 mr-1" />
-                <span className="text-2xl font-bold">{formatPrice(property.price)}</span>
+                <Ruble className="w-4 h-4 md:w-5 md:h-5 mr-1 flex-shrink-0" />
+                <span className="text-xl md:text-2xl font-bold">{formatPrice(property.price)}</span>
               </div>
             </div>
             
             <Link href={`/property/${property.id}`}>
-              <Button className="w-full text-lg py-6" size="lg">
+              <Button className="w-full text-base md:text-lg py-4 md:py-6 button-large" size="lg">
                 Подробнее
               </Button>
             </Link>

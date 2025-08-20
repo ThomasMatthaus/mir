@@ -31,11 +31,11 @@ export default function PropertySearch() {
   ];
 
   return (
-    <Card className="bg-card/80 backdrop-blur-sm">
-      <CardContent className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <Card className="bg-card/90 backdrop-blur-sm border shadow-lg">
+      <CardContent className="p-4 md:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6">
           <Select value={filters.type} onValueChange={(value) => setFilters(prev => ({ ...prev, type: value }))}>
-            <SelectTrigger>
+            <SelectTrigger className="h-12 text-base">
               <SelectValue placeholder="Тип недвижимости" />
             </SelectTrigger>
             <SelectContent>
@@ -46,7 +46,7 @@ export default function PropertySearch() {
           </Select>
 
           <Select value={filters.district} onValueChange={(value) => setFilters(prev => ({ ...prev, district: value }))}>
-            <SelectTrigger>
+            <SelectTrigger className="h-12 text-base">
               <SelectValue placeholder="Район" />
             </SelectTrigger>
             <SelectContent>
@@ -60,6 +60,7 @@ export default function PropertySearch() {
 
           <Input
             type="number"
+            className="h-12 text-base"
             placeholder="Цена от (₽)"
             value={filters.minPrice}
             onChange={(e) => setFilters(prev => ({ ...prev, minPrice: e.target.value }))}
@@ -67,14 +68,15 @@ export default function PropertySearch() {
 
           <Input
             type="number"
+            className="h-12 text-base"
             placeholder="Цена до (₽)"
             value={filters.maxPrice}
             onChange={(e) => setFilters(prev => ({ ...prev, maxPrice: e.target.value }))}
           />
         </div>
 
-        <Button onClick={handleSearch} size="lg" className="w-full text-lg py-6">
-          <Search className="w-5 h-5 mr-2" />
+        <Button onClick={handleSearch} size="lg" className="w-full text-base md:text-lg py-4 md:py-6 button-large">
+          <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
           Найти недвижимость
         </Button>
       </CardContent>
